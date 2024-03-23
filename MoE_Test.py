@@ -11,7 +11,7 @@ params = param.param()
 
 def create_classifier():
     inputs = layers.Input(shape=(None,))
-    embedding_layer = TokenAndPositionEmbedding(
+    embedding_layer = GPT_Embedding(
         params.maxlen, params.vocaps, params.embed_dim
     )
     x = embedding_layer(inputs)

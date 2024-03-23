@@ -13,7 +13,7 @@ transformer_layers = 12
 def getLLM_Layer():
 
     inputs = layers.Input(shape=(None,), dtype="int32")
-    embedding_layer = TokenAndPositionEmbedding(maxlen, vocab_size, embed_dim)
+    embedding_layer = GPT_Embedding(maxlen, vocab_size, embed_dim)
     x = embedding_layer(inputs)
     for i in range(transformer_layers):
         transformer_block = TransformerBlock(embed_dim, num_heads, feed_forward_dim, fp16= False)
@@ -24,7 +24,7 @@ def getLLM_Layer():
 
 def createLLM():
     inputs = layers.Input(shape=(None,), dtype="int32")
-    embedding_layer = TokenAndPositionEmbedding(maxlen, vocab_size, embed_dim)
+    embedding_layer = GPT_Embedding(maxlen, vocab_size, embed_dim)
     x = embedding_layer(inputs)
     for i in range(transformer_layers):
         transformer_block = TransformerBlock(embed_dim, num_heads, feed_forward_dim, fp16= False)
